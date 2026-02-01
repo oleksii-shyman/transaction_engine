@@ -6,7 +6,7 @@ use std::env;
 use std::fs::File;
 use std::io;
 
-type ClientID = u64;
+type ClientID = u16;
 type TransactionID = u64;
 type Currency = Decimal;
 
@@ -110,7 +110,7 @@ impl Engine {
             transaction_id,
             Transaction {
                 client_id,
-                kind: TransactionKind::Withdrawal,
+                kind: TransactionKind::Deposit,
                 amount,
                 disputed: false,
             },
@@ -289,7 +289,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     for client in clients {
         let acc = &engine.accounts[&client];
 
-        // keep output deterministic with exactly 4 decimal places
+        // round to max 4 dp, but avoid padding trailing zeros in output
         let fmt = |d: Currency| d.round_dp(4).to_string();
 
         wtr.write_record([
@@ -304,3 +304,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests;
