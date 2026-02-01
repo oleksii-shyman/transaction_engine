@@ -1,4 +1,5 @@
 AI queries (chatgpt):
+
 1. Can payment processing engine accept negative deposits -> No
 2. Can available funds be negative when processing disputes.
     Let's say that:
@@ -10,5 +11,5 @@ AI queries (chatgpt):
 4. Generate a code that parses strings into decimal numbers using rust_decimal crate.
 5. How to print exacly 4 decimal places on decimal numbers
 
-Codex -> generate tests for me
-All tests are ai generated. I editted some manually, because ai got it wrong.
+Codex -> generate tests for me  
+All tests are ai generated. I editted some of the tests manually
